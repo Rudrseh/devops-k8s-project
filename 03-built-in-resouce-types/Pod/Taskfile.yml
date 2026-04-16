@@ -29,7 +29,7 @@ tasks:
   04-minimal-port-forward:
     desc: "Port forward to the nignx pod"
     cmds:
-      - kubecctl port-foward -n ${NAMESPACE} nginx-minimal 8080:80
+      - kubectl port-foward -n ${NAMESPACE} nginx-minimal 8080:80
 
   05-better-apply:
     desc: "Create a pod the better way"
