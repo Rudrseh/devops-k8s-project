@@ -20,7 +20,7 @@ spec:
         requests:
           memory: "25Mi"
           cpu: "250m"
-     secuurityContext:
+     securityContext:
         allowPrivilegeEscalation: false
         privileged: true
   securityContext:
