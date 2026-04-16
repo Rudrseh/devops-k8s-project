@@ -21,7 +21,7 @@ spec:
           memory: "25Mi"
           cpu: "250m"
      securityContext:
-        allowPrivilegeEscalation: false
+        allowPrivilegeEscalation: true
         privileged: true
   securityContext:
     seccompProfile:
