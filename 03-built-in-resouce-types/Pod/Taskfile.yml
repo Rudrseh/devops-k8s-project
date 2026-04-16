@@ -1,1 +1,50 @@
+version: "3"
 
+env:
+  BORDER: double
+  BORDER_FOREGROUND: "212"
+  PADDING: "1 1"
+  MARGIN: "1 1"
+  NAMESPACE: my-pod
+
+tasks:
+  01-create-namespace:
+    desc: "Create a namespace for the pod and set as default"
+    cmds:
+      - kubectl create -f Namespace.yml
+      - kubens ${NAMESPACE}
+  
+  02-wrong-way-pod:
+    desc: "Create a pod the wrong way"
+    cmds:
+      - cmd: gum style "Please don't do this"
+        silent: true
+      - kubectl run  --image=nginx:1.26.0 -n ${NAMESPACE} created-wrong-way
+
+  03-minimal-way:
+    desc: "Createa a pod the minimal way"
+    cmds:
+      - kubectl apply -n ${NAMESPACE} -f Pod.nginx-minimal.yml
+
+  04-minimal-port-forward:
+    desc: "Port forward to the nignx pod"
+    cmds:
+      - kubecctl port-foward -n ${NAMESPACE} nginx-minimal 8080:80
+
+  05-better-apply:
+    desc: "Create a pod the better way"
+    cmds:
+      - kubectl apply -n ${NAMESPACE} -f Pod.nginx-better.yml
+  
+  06-better-port-forward:
+    desc: "Port forward to the nignx pod"
+    cmds:
+      - kubectl port-forward -n ${NAMESPACE} nginx-better 8080:80
+
+  07-delete-pod:
+    desc: "Delete the namespace to clean up all resources"
+    cmds:
+      - cmd: gum style "This will delete the namespace and all resources in it"
+        silent: true
+      - kubectl delete -f Namespace.yml
+    
