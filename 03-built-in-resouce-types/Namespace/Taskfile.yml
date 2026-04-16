@@ -1,1 +1,17 @@
+version: "3"
 
+tasks:
+  01-create-namespace:
+    cmds:
+      - kubectl create namespace 03--namespace-cli
+    desc: create namespace in cluster
+  
+  02-apply-namespace:
+    cmds:
+      - kubectl create -f Namespace.yml
+  
+  03-delete-namespace:
+    cmds:
+      - kubectl delete namespace 03--namespace-cli
+      - kubectl delete -f Namespace.yml
+    desc: Delete the namespace
