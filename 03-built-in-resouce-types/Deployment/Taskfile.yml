@@ -11,18 +11,18 @@ tasks:
    01-create-namespace:
       desc: "Create a namespace for the deployment"
       cmds:
-          - kubectl create -f Namespace.yaml
+          - kubectl create -f Namespace.yml
           - kubens ${{NAMESPACE}}
 
    02-apply-minimal:
       desc: "Apply the minimal deployment configuration"
       cmds:
-          - kubectl apply -f Deployment.nginx.minima.yaml    
+          - kubectl apply -f Deployment.nginx.minima.yml    
 
    03-apply-better:
       desc: "Apply the better deployment configuration"
       cmds:
-          - kubectl apply -f Deployment.nginx.better.yaml
+          - kubectl apply -f Deployment.nginx.better.yml
 
    04-rollout-restart:
       desc: "Restart the deployment to apply changes"
