@@ -11,7 +11,7 @@ tasks:
    01-create-namespace:
      desc: Create a namespace for the ReplicaSet    
      cmds:
-       - kubectl create -f Naemspace.yaml
+       - kubectl create -f Namespace.yaml
        - kubenvs ${NAMESPACE}
   
    02-create-minimal:
