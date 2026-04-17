@@ -1,1 +1,44 @@
-
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-nginx-better
+  namespace: my-pod
+labels:
+  app: deployment-nginx-better
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: deployment-nginx-better
+  template:
+    metadata:
+      labels:
+        app: deployment-nginx-better
+    spec:
+      containers:
+      - name: nginx
+        image: cgr.dev/chainguard/nginx:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        readinessProbe:
+          httpGet: 
+          path: /
+          port: 8080
+        securityContext:
+          allowPrivilegeEscalation: false
+          priviliged: false
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+        runAsUser: 1010
+        runAsGroup: 1010
+        runAsNonRoot: true
+        

@@ -1,1 +1,5 @@
+aoiVersion: v1
+kind: Namespace
+metadata: 
+  name: my-pod
 
