@@ -1,1 +1,35 @@
+version: "3"
 
+env:
+  BORDER: double
+  BORDER_BACKGROUND: "212"
+  PADDING: "1 1"
+  MARGIN: "1 1"
+  NAMESPACE: my-pod
+
+tasks:
+   01-create-namespace:
+     desc: Create a namespace for the ReplicaSet    
+     cmds:
+       - kubectl create -f Naemspace.yaml
+       - kubenvs ${NAMESPACE}
+  
+   02-create-minimal:
+     desc: Create a minimal ReplicaSet
+     cmds:
+        - kubectl create -f ReplicaSet.nginx-minimal.yml 
+
+   03-create-better:
+      desc: Create a better ReplicaSet
+      cmds:
+        - kubectl create -f ReplicaSet.nginx-better.yml
+
+   04-delete-pod:
+      desc: Delete a pod to see the ReplicaSet in action
+      cmds:
+        - kubectl delete pods --all
+
+   05-delete-namespace:
+      desc: Delete the namespace and all resources in it
+      cmds:
+        - kubectl delete namespace ${NAMESPACE}

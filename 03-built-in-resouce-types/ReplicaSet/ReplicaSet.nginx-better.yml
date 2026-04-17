@@ -1,1 +1,43 @@
-
+apiVersion: app/v1
+kind: ReplicaSet
+metadata:
+  name: replicaset-nginx-better
+  namespace: my-pod
+  labels:
+    app: nginx-better
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-better
+  template:
+    metadata:
+      labels:
+        app: nginx-better
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "256Mi"
+          requests:
+            cpu: "250m"
+            memory: "128Mi"
+        securityContext:
+          allowPrivilegeEscalation: false
+          privileged: false
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+        runAsUser: 1010
+        runAsGroup: 1010
+        runAsNonRoot: true
