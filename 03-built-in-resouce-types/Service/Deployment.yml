@@ -1,1 +1,25 @@
-
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-service
+  namespace: 04-service
+  label:
+    app: nginx-service
+  annotations:
+    bar: deployment-annotation
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      baz: pod-label
+  template:
+    metadata:
+      labels:
+        baz: pod-label
+      annotations:
+        foo: pod-annotation
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.26.0
+          
