@@ -12,7 +12,7 @@ tasks:
      desc: Create a namespace for the ReplicaSet    
      cmds:
        - kubectl create -f Namespace.yml
-       - kubenvs ${NAMESPACE}
+       - kubens ${NAMESPACE}
   
    02-create-minimal:
      desc: Create a minimal ReplicaSet
