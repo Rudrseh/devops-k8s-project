@@ -28,17 +28,25 @@ spec:
         ports:
         - containerPort: 8080
           protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
         readinessProbe:
           httpGet: 
             path: /
             port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10  
         securityContext:
           allowPrivilegeEscalation: false
           privileged: false
       securityContext:
         seccompProfile:
           type: RuntimeDefault
-        runAsUser: 1010
-        runAsGroup: 1010
+        runAsUser: 65532
+        runAsGroup: 65532
         runAsNonRoot: true
         
