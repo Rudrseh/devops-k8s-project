@@ -12,7 +12,7 @@ tasks:
       desc: "Create a namespace for the deployment"
       cmds:
           - kubectl create -f Namespace.yml
-          - kubens ${{NAMESPACE}}
+          - kubens ${NAMESPACE}
 
    02-apply-minimal:
       desc: "Apply the minimal deployment configuration"
@@ -33,4 +33,4 @@ tasks:
    05-cleanup-namespace:
       desc: "Clean up the namespace and all resources"
       cmds:
-          - kubectl delete namespace ${{NAMESPACE}}
+          - kubectl delete namespace ${NAMESPACE}
