@@ -34,7 +34,7 @@ spec:
             port: 8080
         securityContext:
           allowPrivilegeEscalation: false
-          priviliged: false
+          privileged: false
       securityContext:
         seccompProfile:
           type: RuntimeDefault
