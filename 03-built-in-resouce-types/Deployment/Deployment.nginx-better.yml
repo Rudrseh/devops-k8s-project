@@ -30,8 +30,8 @@ spec:
           protocol: TCP
         readinessProbe:
           httpGet: 
-          path: /
-          port: 8080
+            path: /
+            port: 8080
         securityContext:
           allowPrivilegeEscalation: false
           priviliged: false
