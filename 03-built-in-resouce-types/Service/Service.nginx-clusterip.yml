@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-ClusterIP
+  name: nginx-clusterip
   labels:
     foo: service-label
   annotations:
