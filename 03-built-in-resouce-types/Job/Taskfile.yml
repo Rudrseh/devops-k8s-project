@@ -27,7 +27,7 @@ tasks:
   04-apply-better-job:
     desc: "Apply the better Job configuration"
     cmds:
-      - kubectl apply -f Job.echo-date-better.yml
+      - kubectl apply -f Job.echo-better-date.yml
 
   05-delete-namespace:
     desc: "Delete the namespace to clean up"
