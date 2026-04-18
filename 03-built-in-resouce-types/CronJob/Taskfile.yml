@@ -27,7 +27,7 @@ tasks:
   04-create-job-from-cronjob:
     desc: "Manually create a job using a cronjob as the template"
     cmds:
-      - kubectl create job --from=cronjob/echo-date-better manually-triggered
+      - kubectl create job --from=cronjob/echo-better-date manually-triggered
 
   05-delete-namespace:
     desc: "Delete the namespace to clean up"
