@@ -1,1 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-ClusterIP
+  labels:
+    foo: service-label
+  annotations:
+    bar: service-annotation
+spec:
+  type: ClusterIP
+  selector:
+      baz: pod-level
+  ports:
+  - protocol: TCP
+    port: 80 
+    targetPort: 80
 
+ 

@@ -1,1 +1,38 @@
+version: "3"
 
+env:
+  BORDER: double
+  BORDER_BACKGROUND: "212"
+  PADDING: "1 1"
+  MARGIN: "1 1"
+  NAMESPACE: 04-service
+
+tasks:
+   01-create-namespace:
+     cmds:
+       - kubectl create -f Namespace.yaml
+       - kubens ${NAMESPACE}
+  
+   02-apply-deployment:
+      cmds: 
+        - kubectl create -f Deployment.yml
+
+   03-apply-clusterip:
+      cmds: 
+        - kubectl create -f ClusterIP.yaml
+
+   04-apply-nodeport-service:
+    desc: "Apply the  NodePort Service"
+    cmds:
+      - kubectl apply -f Service.nginx-nodeport.yaml
+
+   05-apply-loadbalancer-service:
+     desc: "Apply the  LoadBalancer Service"
+     cmds:
+      - kubectl apply -f Service.nginx-loadbalancer.yaml
+
+   06-delete-namespace:
+     desc: "Delete the namespace to clean up"
+     cmds:
+      - kubectl delete -f Namespace.yaml
+      
