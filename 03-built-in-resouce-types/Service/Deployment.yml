@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-service
+  name: nginx-deployment
   namespace: 04-service
-label:
-  app: nginx-service
-annotations:
-  bar: deployment-annotation
+  label:
+   foo: deployment-label
+  annotations:
+   bar: deployment-annotation
 spec:
   replicas: 2
   selector:
