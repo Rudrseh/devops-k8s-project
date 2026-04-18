@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job 
 metadata:
-  name: echo-date-minimal
+  name: echo-date-better
   namespace: 04-job
 spec:
    parallelism: 2
@@ -10,7 +10,6 @@ spec:
    backoffLimit: 1
    template:
       metadata:
-        name: echo-date-pod
         labels:
           app: echo-date
       spec:
