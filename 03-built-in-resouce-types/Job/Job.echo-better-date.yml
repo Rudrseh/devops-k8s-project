@@ -8,7 +8,7 @@ spec:
    completions: 2
    activeDeadlineSeconds: 100
    backoffLimit: 1
-    template:
+   template:
       metadata:
         name: echo-date-pod
         labels:
