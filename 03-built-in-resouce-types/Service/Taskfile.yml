@@ -9,15 +9,18 @@ env:
 
 tasks:
    01-create-namespace:
+     desc: "Create a namespace for the Service demo and switch to it"
      cmds:
        - kubectl create -f Namespace.yaml
        - kubens ${NAMESPACE}
   
    02-apply-deployment:
+      desc: "Apply the Deployment for the Service demo"
       cmds: 
         - kubectl create -f Deployment.yml
 
    03-apply-clusterip:
+      desc: "Apply the ClusterIP Service"
       cmds: 
         - kubectl create -f ClusterIP.yaml
 
