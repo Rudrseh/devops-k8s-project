@@ -22,20 +22,20 @@ tasks:
    03-apply-clusterip:
       desc: "Apply the ClusterIP Service"
       cmds: 
-        - kubectl create -f ClusterIP.yaml
+        - kubectl create -f ClusterIP.yml
 
    04-apply-nodeport-service:
     desc: "Apply the  NodePort Service"
     cmds:
-      - kubectl apply -f Service.nginx-nodeport.yaml
+      - kubectl apply -f Service.nginx-nodeport.yml
 
    05-apply-loadbalancer-service:
      desc: "Apply the  LoadBalancer Service"
      cmds:
-      - kubectl apply -f Service.nginx-loadbalancer.yaml
+      - kubectl apply -f Service.nginx-loadbalancer.yml
 
    06-delete-namespace:
      desc: "Delete the namespace to clean up"
      cmds:
-      - kubectl delete -f Namespace.yaml
+      - kubectl delete -f Namespace.yml
       
