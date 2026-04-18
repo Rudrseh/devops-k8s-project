@@ -1,1 +1,36 @@
-
+apiVersion: batch/v1
+kind: Job 
+metadata:
+  name: echo-date-minimal
+  namespace: 04-job
+spec:
+   parallelism: 2
+   completions: 2
+   activeDeadlineSeconds: 100
+   backoffLimit: 1
+    template:
+      metadata:
+        name: echo-date-pod
+        labels:
+          app: echo-date
+      spec:
+        containers:
+        - name: echo
+          image: cgr.dev/chainguard/busybox:latest
+          command: ["date"]
+        resources:
+          limits:
+            memory: "50Mi"
+          requests:
+            cpu: "250m"
+            memory: "50Mi"
+        securityContext:
+          allowPrivilegeEscalation: false
+          privileged: false
+          runAsNonRoot: true
+          runAsUser: 1001
+          runAsGroup: 1001
+        restartPolicy: Never
+      securityContext:
+          seccompProfile:
+            type: RuntimeDefault
