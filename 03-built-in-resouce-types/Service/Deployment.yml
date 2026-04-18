@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
-  namespace: 04-service
-  label:
+  #namespace: 04-service
+  labels:
    foo: deployment-label
   annotations:
    bar: deployment-annotation
