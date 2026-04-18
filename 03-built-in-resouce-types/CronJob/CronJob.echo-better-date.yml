@@ -7,7 +7,7 @@ spec:
   schedule: "*/1 * * * *"
   jobTemplate:
      spec:
-       parlellism: 1
+       parallelism: 1
        completions: 1
        activeDeadlineSeconds: 100
        backoffLimit: 1
