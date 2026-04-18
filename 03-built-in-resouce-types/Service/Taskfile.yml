@@ -22,7 +22,7 @@ tasks:
    03-apply-clusterip:
       desc: "Apply the ClusterIP Service"
       cmds: 
-        - kubectl create -f ClusterIP.yml
+        - kubectl create -f Service.nginx-clusterip.yml
 
    04-apply-nodeport-service:
     desc: "Apply the  NodePort Service"
