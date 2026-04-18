@@ -11,7 +11,7 @@ tasks:
    01-create-namespace:
      desc: "Create a namespace for the Service demo and switch to it"
      cmds:
-       - kubectl create -f Namespace.yaml
+       - kubectl create -f Namespace.yml
        - kubens ${NAMESPACE}
   
    02-apply-deployment:
