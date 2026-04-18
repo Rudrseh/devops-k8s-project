@@ -1,1 +1,41 @@
-
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: echo-better-date
+  namespace: 04-cronjob
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+     spec:
+       parlellism: 1
+       completions: 1
+       activeDeadlineSeconds: 100
+       backoffLimit: 1
+       template:
+         metadata:
+           labels:
+             app: echo-date
+         spec:
+           containers:
+            - name: echo
+              image: cgr.dev/chainguard/busybox:latest
+              args:
+              - /bin/sh
+              - -c
+              - date; echo Hello from the Kubernetes cluster!
+              resources:
+                limits:
+                  memory: "50Mi"
+                requests:
+                  memory: "50Mi"
+                  cpu: "250m"
+              securityContext:
+                allowPrivilegeEscalation: false
+                privileged: false
+                runAsNonRoot: true
+                runAsGroup: 65532
+                runAsUser: 65532
+           restartPolicy: Never  
+           securityContext:
+             seccompProfile:
+               type: RuntimeDefault
