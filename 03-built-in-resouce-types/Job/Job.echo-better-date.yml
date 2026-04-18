@@ -17,19 +17,19 @@ spec:
         - name: echo
           image: cgr.dev/chainguard/busybox:latest
           command: ["date"]
-        resources:
-          limits:
-            memory: "50Mi"
-          requests:
-            cpu: "250m"
-            memory: "50Mi"
-        securityContext:
-          allowPrivilegeEscalation: false
-          privileged: false
-          runAsNonRoot: true
-          runAsUser: 1001
-          runAsGroup: 1001
+          resources:
+            limits:
+              memory: "50Mi"
+            requests:
+              cpu: "250m"
+              memory: "50Mi"
+          securityContext:
+            allowPrivilegeEscalation: false
+            privileged: false
+            runAsNonRoot: true
+            runAsUser: 1001
+            runAsGroup: 1001
         restartPolicy: Never
-      securityContext:
+        securityContext:
           seccompProfile:
             type: RuntimeDefault
