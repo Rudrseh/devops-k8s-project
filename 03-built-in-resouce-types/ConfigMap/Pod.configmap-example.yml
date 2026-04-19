@@ -9,7 +9,7 @@ spec:
       volumeMounts:
         - name: configmap-file-like-keys
           mountPath: /etc/config
-      env:
+      envFrom:
        - configMapRef:
            name: properties-file-like-keys
   volumes:
