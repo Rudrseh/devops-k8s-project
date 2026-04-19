@@ -22,7 +22,7 @@ spec:
            - "-c"
            - | 
              set -ex
-             [[ $HOSTNAME == -([0-9]+)$]] || exit 1
+             [[ $HOSTNAME =~ -([0-9]+)$]] || exit 1
              ordinal=${BASH_REMATCH[1]}
              echo "<h1>Hello from pod $ordinal</h1>" > /usr/share/nginx/html/index.html   
          volumeMounts:
