@@ -13,6 +13,6 @@ spec:
        - configMapRef:
            name: properties-file-like-keys
   volumes:
-     -  name: configmap-file-like-keys
-        configMap:
-          - key: file-like-keys 
+     - name: configmap-file-like-keys
+       configMap:
+        name: file-like-keys 
