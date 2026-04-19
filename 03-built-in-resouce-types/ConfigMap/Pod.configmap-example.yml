@@ -11,7 +11,7 @@ spec:
           mountPath: /etc/config
       envFrom:
        - configMapRef:
-           name: properties-file-like-keys
+          name: properties-file-keys
   volumes:
      - name: configmap-file-like-keys
        configMap:
