@@ -1,1 +1,9 @@
+apiVersion: v1
+kind: ConfingMap
+metadata:
+  name: property-like-keys
+data:
+   name: YourAppName
+   version: 1.0.0
+   author: YourName
 
