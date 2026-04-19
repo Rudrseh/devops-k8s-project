@@ -4,7 +4,7 @@ metadata:
   - name: nginxs
 spec:
   type: ClusterIP
-  clusterIP: none
+  clusterIP: None
   selector:
     app: nginx
   ports:
