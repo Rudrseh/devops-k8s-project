@@ -11,23 +11,23 @@ tasks:
   01-create-namespace:
     desc: "Create a namespace for these examples and set as default"
     cmds:
-      - kubectl apply -f Namespace.yaml
+      - kubectl apply -f Namespace.yml
       - kubens ${NAMESPACE}
 
   02-apply-file-like:
     desc: "Apply the ConfigMap with file like keys"
     cmds:
-      - kubectl apply -f ConfigMap.file-like-keys.yaml
+      - kubectl apply -f ConfigMap.file-like-keys.yml
 
   03-apply-property-like:
     desc: "Apply the ConfigMap with property like keys"
     cmds:
-      - kubectl apply -f ConfigMap.property-like-keys.yaml
+      - kubectl apply -f ConfigMap.property-like-keys.yml
 
   04-apply-pod:
     desc: "Apply the ConfigMap with property like keys"
     cmds:
-      - kubectl apply -f Pod.configmap-example.yaml
+      - kubectl apply -f Pod.configmap-example.yml
 
   05-exec-cat-config:
     desc: "Cat /etc/config/conf.yaml within the container"
@@ -42,4 +42,4 @@ tasks:
   07-delete-namespace:
     desc: "Delete the namespace to clean up"
     cmds:
-      - kubectl delete -f Namespace.yaml
+      - kubectl delete -f Namespace.yml
