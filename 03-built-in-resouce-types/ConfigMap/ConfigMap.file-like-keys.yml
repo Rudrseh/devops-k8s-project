@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: file-like-keys
 data:
-  conf.yaml: |
+  conf.yml: |
     name: YourAppName
     version: 1.0.0
     author:   YourName
