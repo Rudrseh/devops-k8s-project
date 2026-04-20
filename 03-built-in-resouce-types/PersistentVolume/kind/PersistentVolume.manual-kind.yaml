@@ -1,0 +1,45 @@
+piVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: manual-kind-worker
+  label:
+    name: manual-kind
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity: 
+    storage: 100Mi
+  storageClassName: standard
+  local:
+    path: /some/path/in/container
+  nodeAffinity: 
+    required: 
+      nodeSelectorTerms: 
+         - matchExpressions: 
+             - key: kubernetes.io/hostname
+               operator: In 
+               values:
+                 - kind-worker
+---
+kind: PersistentVolumeClaim
+metadata:
+  name: manual-kind-worker2
+  label:
+    name: manual-kind
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity: 
+    storage: 100Mi
+  storageClassName: standard
+  local:
+    path: /some/path/in/container
+  nodeAffinity: 
+    required: 
+      nodeSelectorTerms: 
+         - matchExpressions: 
+             - key: kubernetes.io/hostname
+               operator: In 
+               values:
+                 - kind-worker2
+
