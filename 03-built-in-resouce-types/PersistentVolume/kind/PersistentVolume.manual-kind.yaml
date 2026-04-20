@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: manual-kind-worker
   label:
-    name: manu-kind
+    name: manual-kind
 spec:
   accessModes:
     - ReadWriteOnce
@@ -21,6 +21,7 @@ spec:
                values:
                  - kind-worker
 ---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: manual-kind-worker2
