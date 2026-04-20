@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minimal-nginx
+  labels:
+    app.kubernetes.io/name: myingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "ingress-example-nginx.com"
+    http:
+      paths:
+      - pathType: ImplementationSpecific
+        path: "/"
+        backend:
+          service:
+            name: nginx-clusterip
+            port: 
+              number: 80
