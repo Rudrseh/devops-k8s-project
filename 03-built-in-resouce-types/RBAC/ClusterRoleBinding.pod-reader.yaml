@@ -7,6 +7,6 @@ roleRef:
   kind: ClusterRole
   name: pod-reader
 subjects:
-  - kind: serviceAccounts
+  - kind: ServiceAccounts
     name: cluster-pod-reader
     namespace: 04--rbac
