@@ -4,11 +4,12 @@ metadata:
   name: namespaced-pod-permissions-fail
 spec:
   template:
-    automountServiceAccountToken: true
     spec:
-      containers:
+     automountServiceAccountToken: true
+     containers:
       - name: kubectl 
         image: cgr.dev/chainguard/kubectl  
         args: ["get", "pods", "-A"]
-      restartPolicy: Never
-    backoffLimit: 1
+     serviceAccountName: namespaced-pod-reader
+     restartPolicy: Never
+  backoffLimit: 1
