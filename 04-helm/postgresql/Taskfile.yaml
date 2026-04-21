@@ -30,8 +30,6 @@ tasks:
   ### OCI registry
   04-login-oci-registry:
     cmds:
-      - cmd: gum style "Use your dockerhub username and password!"
-        silent: true
       - helm registry login registry-1.docker.io
     desc: Login to OCI registry
 
