@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: namespaced-pod-permissions-fail
+spec:
+  template:
+    automountServiceAccountToken: true
+    spec:
+      containers:
+      - name: kubectl 
+        image: cgr.dev/chainguard/kubectl  
+        args: ["get", "pods", "-A"]
+      restartPolicy: Never
+    backoffLimit: 1
