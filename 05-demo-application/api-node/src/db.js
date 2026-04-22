@@ -1,10 +1,18 @@
 const fs = require("fs");
-
 const { Pool } = require("pg");
 
-databaseUrl =
-  process.env.DATABASE_URL ||
-  fs.readFileSync(process.env.DATABASE_URL_FILE, "utf8");
+// Fix: only read from file if DATABASE_URL is not set AND DATABASE_URL_FILE is defined
+let databaseUrl;
+
+if (process.env.DATABASE_URL) {
+  databaseUrl = process.env.DATABASE_URL;
+} else if (process.env.DATABASE_URL_FILE) {
+  databaseUrl = fs.readFileSync(process.env.DATABASE_URL_FILE, "utf8").trim();
+} else {
+  throw new Error(
+    "Neither DATABASE_URL nor DATABASE_URL_FILE environment variable is set."
+  );
+}
 
 const pool = new Pool({
   connectionString: databaseUrl,
@@ -44,9 +52,7 @@ const getDateTimeAndRequests = async () => {
 const insertRequest = async () => {
   const client = await pool.connect();
   try {
-    const res = await client.query(
-      "INSERT INTO request (api_name) VALUES ('node');",
-    );
+    await client.query("INSERT INTO request (api_name) VALUES ('node');");
     return;
   } catch (err) {
     console.log(err.stack);
