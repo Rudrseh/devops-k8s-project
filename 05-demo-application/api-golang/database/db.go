@@ -39,4 +39,4 @@ func GetTimeAndRequestCount(ctx *gin.Context) (time.Time, int) {
 		os.Exit(1)
 	}
 	return tm, reqCount
-}s
+}
