@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: load-generator-config
+  namespace: demo-app 
+data:
+  API_URL: http://api-node.demo-app.svc.cluster.local:3000
+  DELAY_MS: "100"

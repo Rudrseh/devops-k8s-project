@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-node
+  namespace: demo-app 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-node
+  template:
+    metadata: 
+      labels:
+        app: api-node
+    spec:
+      containers:
+        - name: api-node
+          image: ghcr.io/azure-samples/aks-node-api:latest
+          ports:
+            - containerPort: 3000
+              protocal: TCP
+          redinessProbe:
+            failureThreshold: 3
+            httpGet: 
+               path: /ping
+               port: 8000
+          resources:
+            limits:
+              cpu: 500m
+              memory: "128Mi"
+            requests:
+              cpu: 250m
+              memory: "64Mi"
+          securityContext:
+            allowPrivilegeEscalation: false
+            priviliged: false
+          volumeMounts:
+            - name: data
+              mountPath: /usr/src/app/data
+      securityContext:
+         seccompProfile:
+           type: RuntimeDefault
+      volumes:
+        - configMap:
+            defaultMode: 420
+            name: api-node-config
+          name: data
+          

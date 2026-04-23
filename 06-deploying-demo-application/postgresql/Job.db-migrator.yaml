@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-migrator
+  namespace: demo-app
+spec:
+  template: 
+    spec:
+      containers:
+        - name: db-migrator
+          image: postgres:15.3
+          args:
+            - -path=/app/migrations
+            - -database=$(DATABASE_URL)?sslmode=disable
+            - up
+          env:
+            secretKeyRef:
+              name: db-password
+      restartPolicy: OnFailure

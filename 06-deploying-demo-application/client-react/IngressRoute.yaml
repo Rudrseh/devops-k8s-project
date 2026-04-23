@@ -1,0 +1,15 @@
+apiVersion:  traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: client-react
+  namespace: demo-app
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`kubernetes-course.devopsdirective.com`)
+      kind: Rule
+      services:
+        - name: client-react-ngix
+          port: 8080
+          scheme: http
