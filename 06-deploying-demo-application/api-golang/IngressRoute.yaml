@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-golang
+  namespace: demo-app
+  labels:
+    app.kubernetes.io/name: myingress
+spec:
+  entryPoints:
+    - web 
+  routes: 
+    - kind: Rule
+      match: Host(`kubernetes-course.devopsdirective.com`) && PathPrefix(`/api/golang`)
+      middlewares:
+        - name: strip-api-prefixes
+      service:
+        - kind: Service 
+          name: api-golang
+          port: 8000
+          scheme: http 
+
