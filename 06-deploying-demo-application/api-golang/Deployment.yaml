@@ -24,7 +24,7 @@ spec:
               name: api-golang-database-url
         ports:
         - containerPort: 8000
-          protocal: TCP
+          protocol: TCP
         readinessProbe:
            httpGet:
              path: /ping
@@ -38,6 +38,7 @@ spec:
         securityContext:
          allowPrivilegeEscalation: false
          privileged: false
+         runAsNonRoot: true
       securityContext:
         seccompProfile:
         type: RuntimeDefault 
