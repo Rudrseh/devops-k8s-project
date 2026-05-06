@@ -1,5 +1,5 @@
 apiVersion: traefik.containo.us/v1alpha1
-kind: Ingress
+kind: IngressRoute
 metadata:
   name: api-golang
   namespace: demo-app
@@ -13,7 +13,7 @@ spec:
       match: Host(`kubernetes-course.devopsdirective.com`) && PathPrefix(`/api/golang`)
       middlewares:
         - name: strip-api-prefixes
-      service:
+      services:
         - kind: Service 
           name: api-golang
           port: 8000
