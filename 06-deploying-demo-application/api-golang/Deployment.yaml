@@ -40,5 +40,5 @@ spec:
          privileged: false
       securityContext:
         seccompProfile:
-        type: RuntimeDefault 
-        runAsNonRoot: true
+         type: RuntimeDefault 
+        
